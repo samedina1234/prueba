@@ -210,6 +210,7 @@
             <div class="form-group">
                 <label for="tipobeca">Tipo de Beca:</label>
                 <select id="tipobeca" name="tipobeca" required>
+                    <option value="" disabled selected>Seleccione el tipo de Beca</option>
                     <option value="academica">Excelencia Academica</option>
                     <option value="deportiva">Becas Deportivas</option>
                     <option value="economica">Becas de Necesidad Económica</option>
@@ -228,6 +229,7 @@
             <div class="form-group">
                 <label for="carrerabeca">Carrera a la que aplica esta Beca:</label>
                 <select id="carrerabeca" name="carrerabeca" required>
+                    <option value="" disabled selected>Seleccione la carrera</option>
                     <option value="carreras">Todas Las Carreras</option>
                     <option value="ingenieria">Ingeniería</option>
                     <option value="medicina">Medicina</option>
@@ -256,17 +258,64 @@
             </div>
             <div class="form-group">
                 <label for="porcentaje-beca">Porcentaje de la Beca:</label>
-                <input type="number" id="porcentaje-beca" name="porcentaje-beca" step="1" min="45" max="100" required pattern="\d+" title="Por favor, ingrese un porcentaje entre 0 y 100.">
+                <input type="number" id="porcentaje-beca" name="porcentaje-beca" step="1" min="45" max="100" required pattern="\d+" title="Por favor, ingrese un porcentaje entre 0 y 100." maxlength="3" oninput="this.value = this.value.slice(0, 3)">
             </div>
             <div class="form-group">
                 <label for="generobeca">Genero de los Solicitantes:</label>
                 <select id="generobeca" name="generobeca" required>
+                    <option value="" disabled selected>Seleccione el genero</option>
                     <option value="todos">Todos</option>
                     <option value="mujeres">Mujeres</option>
                     <option value="hombres">Hombres</option>
                     <!-- Agrega más opciones según sea necesario -->
                 </select>
             </div>
+            <div class="form-group">
+                <label for="nacionalidad">Nacionalidad a la que aplica la beca:</label>
+                <select id="nacionalidad" name="nacionalidad" required>
+                    <option value="" disabled selected>Seleccione su nacionalidad</option>
+                    <option value="ecuador">Ecuatoriana</option>
+                    <option value="argentina">Argentina</option>
+                    <option value="chile">Chilena</option>
+                    <option value="colombia">Colombiana</option>
+                    <option value="mexico">Méxicana</option>
+                    <option value="peru">Peruana</option>
+                    <option value="espana">Española</option>
+                    <option value="todas">Todas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="beca-discapacitados">¿La beca es solo para personas discapacitadas?</label>
+                <select id="beca-discapacitados" name="beca-discapacitados" required onchange="toggleDisabilityFields()">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+                </select>
+            </div>
+            <!-- Div para el tipo de discapacidad -->
+            <div class="form-group" id="tipo-discapacidad" style="display: none;">
+                <label for="tipo-discapacidad-input">Tipo de discapacidad:</label>
+                <input type="text" id="tipo-discapacidad-input" name="tipo-discapacidad-input" placeholder="Especificar tipo de discapacidad">
+            </div>
+            <!-- Div para el porcentaje de discapacidad -->
+            <div class="form-group" id="porcentaje-discapacidad" style="display: none;">
+                <label for="porcentaje-discapacidad-input">Porcentaje de discapacidad:</label>
+                <input type="number" id="porcentaje-discapacidad-input" name="porcentaje-discapacidad-input" min="0" max="100" required placeholder="Ejemplo: 50" maxlength="3" oninput="this.value = this.value.slice(0, 3)">
+            </div>
+            <script>
+                function toggleDisabilityFields() {
+                    const select = document.getElementById('beca-discapacitados');
+                    const tipoDiscapacidad = document.getElementById('tipo-discapacidad');
+                    const porcentajeDiscapacidad = document.getElementById('porcentaje-discapacidad');
+                    if (select.value === 'si') {
+                        tipoDiscapacidad.style.display = 'block';
+                        porcentajeDiscapacidad.style.display = 'block';
+                    } else {
+                        tipoDiscapacidad.style.display = 'none';
+                        porcentajeDiscapacidad.style.display = 'none';
+                    }
+                }
+            </script>
             <!-- Confirmación y Envío -->
             <div class="form-group">
                 <input type="checkbox" id="declaracion" name="declaracion" required>
