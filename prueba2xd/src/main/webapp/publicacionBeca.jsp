@@ -200,44 +200,35 @@
     </div>
     </div>
          <div class="container">
-        <h2>Formulario de Registo</h2>
+        <h2>Publicar Beca</h2>
         <form action="#" method="post" enctype="multipart/form-data">
             <!-- Información Personal -->
             <div class="form-group">
-                <label for="nombre">Nombre completo:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <label for="titulobeca">Titulo de la Beca:</label>
+                <input type="text" id="titulobeca" name="titulobeca" required>
             </div>
             <div class="form-group">
-                <label for="fecha-nacimiento">Fecha de nacimiento:</label>
-                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+                <label for="tipobeca">Tipo de Beca:</label>
+                <select id="tipobeca" name="tipobeca" required>
+                    <option value="academica">Excelencia Academica</option>
+                    <option value="deportiva">Becas Deportivas</option>
+                    <option value="economica">Becas de Necesidad Económica</option>
+                    <option value="internacional">Becas Internacionales</option>
+                    <option value="minorias">Becas para Minorías Sociales</option>
+                    <option value="empresas">Becas de Empresa</option>
+                    <option value="gobernamental">Becas de Programas Gubernamentales</option>
+                    <option value="gobernamental">Becas de Programa Sin Fines de Lucro</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
             </div>
             <div class="form-group">
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="imagenbeca">Imagen Promocional de la Beca:</label>
+                <input type="file" id="imagenbeca" name="imagenbeca" accept=".png, .jpeg, .jpg" required>
             </div>
             <div class="form-group">
-                <label for="telefono">Número de teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
-            </div>
-
-            <!-- Información Académica -->
-            <div class="form-group">
-                <label for="escuela">Escuela Secundaria o Colegio de Procedencia:</label>
-                <input type="text" id="escuela" name="escuela" required>
-            </div>
-            <div class="form-group">
-                <label for="promedio">Promedio de calificaciones:</label>
-                <input type="number" id="promedio" name="promedio" step="0.01" required>
-            </div>
-            <div class="form-group">
-                <label for="transcripcion">Títutlo de Bachiller:</label>
-                <input type="file" id="transcripcion" name="transcripcion" accept=".pdf,.jpg" required>
-            </div>
-
-            <!-- Selección de Carrera -->
-            <div class="form-group">
-                <label for="carrera">Carrera a la que deseas aplicar:</label>
-                <select id="carrera" name="carrera" required>
+                <label for="carrerabeca">Carrera a la que aplica esta Beca:</label>
+                <select id="carrerabeca" name="carrerabeca" required>
+                    <option value="carreras">Todas Las Carreras</option>
                     <option value="ingenieria">Ingeniería</option>
                     <option value="medicina">Medicina</option>
                     <option value="derecho">Derecho</option>
@@ -247,43 +238,35 @@
                     <!-- Agrega más opciones según sea necesario -->
                 </select>
             </div>
-
-            <!-- Experiencia Extracurricular -->
             <div class="form-group">
-                <label for="extracurricular">Participación en actividades extracurriculares:</label>
-                <textarea id="extracurricular" name="extracurricular" rows="4" required></textarea>
-            </div>
-
-            <!-- Ensayo Personal -->
-            <div class="form-group">
-                <label for="ensayo">Ensayo personal:</label>
-                <textarea id="ensayo" name="ensayo" rows="6" placeholder="Explique por qué merece esta beca y cómo contribuirá a la comunidad universitaria." required></textarea>
-            </div>
-
-            <!-- Referencias -->
-            <div class="form-group">
-                <label for="referencia1">Nombre de la referencia 1:</label>
-                <input type="text" id="referencia1" name="referencia1" required>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="6" required></textarea>
             </div>
             <div class="form-group">
-                <label for="email_referencia1">Correo electrónico de la referencia 1:</label>
-                <input type="email" id="email_referencia1" name="email_referencia1" required>
+                <label for="fecha-inicio">Fecha de Inicio:</label>
+                <input type="date" id="fecha-inicio" name="fecha-inicio" required>
             </div>
             <div class="form-group">
-                <label for="telefono_referencia1">Teléfono de la referencia 1:</label>
-                <input type="tel" id="telefono_referencia1" name="telefono_referencia1" required>
-            </div>
-
-            <!-- Documentos Adicionales -->
-            <div class="form-group">
-                <label for="Copia de Cedula">Copia de Cedula:</label>
-                <input type="file" id="recomendacion" name="recomendacion" accept=".pdf,.jpg" required>
+                <label for="fecha-fin">Fecha de Fin:</label>
+                <input type="date" id="fecha-fin" name="fecha-fin" required>
             </div>
             <div class="form-group">
-                <label for="factura de servicio basico">Factura de servicio basico:</label>
-                <input type="file" id="cv" name="cv" accept=".pdf,.jpg" required>
+                <label for="cupobeca">Cupos para la Beca:</label>
+                <input type="number" id="cupobeca" name="cupobeca" step="1" min="0" required pattern="\d+" title="Por favor, ingrese un número entero.">
             </div>
-
+            <div class="form-group">
+                <label for="porcentaje-beca">Porcentaje de la Beca:</label>
+                <input type="number" id="porcentaje-beca" name="porcentaje-beca" step="1" min="45" max="100" required pattern="\d+" title="Por favor, ingrese un porcentaje entre 0 y 100.">
+            </div>
+            <div class="form-group">
+                <label for="generobeca">Genero de los Solicitantes:</label>
+                <select id="generobeca" name="generobeca" required>
+                    <option value="todos">Todos</option>
+                    <option value="mujeres">Mujeres</option>
+                    <option value="hombres">Hombres</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
+            </div>
             <!-- Confirmación y Envío -->
             <div class="form-group">
                 <input type="checkbox" id="declaracion" name="declaracion" required>
