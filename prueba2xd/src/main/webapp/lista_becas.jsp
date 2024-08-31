@@ -142,7 +142,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1>Becas Ecuador</h1>
+            <h1>listado Becas</h1>
         </div>
         <nav>
             <ul>
