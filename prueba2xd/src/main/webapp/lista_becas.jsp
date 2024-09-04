@@ -1,19 +1,13 @@
-<%-- 
-    Document   : lista_becas
-    Created on : 25 ago 2024, 18:34:31
-    Author     : Tuf
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Becas</title>
     <style>
-        /* Estilos CSS */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -65,7 +59,7 @@
         }
 
         nav ul li a:hover {
-            color: #FFD700; 
+            color: #FFD700;
         }
 
         main {
@@ -95,12 +89,6 @@
             align-items: center;
         }
 
-        .scholarship-image {
-            width: 100px;
-            height: auto;
-            margin-right: 20px;
-        }
-
         .scholarship-details {
             flex: 1;
         }
@@ -112,134 +100,40 @@
 
         p {
             margin: 0.5rem 0;
-            color: #666;
-        }
-
-        .apply-button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .apply-button:hover {
-            background-color: #0056b3;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 0.5rem 0;
-            width: 100%;
-            bottom: 0;
+            color: #555;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <h1>listado Becas</h1>
+            <h1>Lista de Becas</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Registro</a></li>
-                <li><a href="#">Postular</a></li>
-                <li><a href="#">Cerrar Sesión</a></li>
+                <li><a href="index.jsp">Inicio</a></li>
+                <li><a href="listarBecas">Lista de Becas</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="scholarship-list">
-            <h2>Becas Disponibles</h2>
+        <div class="scholarship-list">
+            <h2>Lista de Becas Disponibles</h2>
             <ul>
-                <li>
-                    <img src="beca1.jpg" alt="Beca de Excelencia Académica" class="scholarship-image">
-                    <div class="scholarship-details">
-                        <h3>Beca de Excelencia Académica</h3>
-                        <p><strong>Tipo de Beca:</strong> Académica</p>
-                        <p><strong>Carrera:</strong> Ingeniería Informática</p>
-                        <p><strong>Descripción:</strong> Esta beca está destinada a estudiantes con un rendimiento académico excepcional que desean estudiar Ingeniería Informática.</p>
-                        <p><strong>Fecha de Publicación:</strong> 1 de agosto de 2024</p>
-                        <p><strong>Fecha Límite de Postulación:</strong> 31 de agosto de 2024</p>
-                        <p><strong>Porcentaje de Beca:</strong> 100%</p>
-                        <button class="apply-button">Aplicar</button>
-                    </div>
-                </li>
-                <li>
-                    <img src="beca2.jpg" alt="Beca de Investigación Científica" class="scholarship-image">
-                    <div class="scholarship-details">
-                        <h3>Beca de Investigación Científica</h3>
-                        <p><strong>Tipo de Beca:</strong> Investigación</p>
-                        <p><strong>Carrera:</strong> Biotecnología</p>
-                        <p><strong>Descripción:</strong> Para estudiantes que buscan participar en proyectos de investigación científica en el campo de la Biotecnología.</p>
-                        <p><strong>Fecha de Publicación:</strong> 5 de julio de 2024</p>
-                        <p><strong>Fecha Límite de Postulación:</strong> 15 de septiembre de 2024</p>
-                        <p><strong>Porcentaje de Beca:</strong> 75%</p>
-                        <button class="apply-button">Aplicar</button>
-                    </div>
-                </li>
-                <li>
-                    <img src="beca3.jpg" alt="Beca Deportiva" class="scholarship-image">
-                    <div class="scholarship-details">
-                        <h3>Beca Deportiva</h3>
-                        <p><strong>Tipo de Beca:</strong> Deportiva</p>
-                        <p><strong>Carrera:</strong> Ciencias del Deporte</p>
-                        <p><strong>Descripción:</strong> Para estudiantes que han demostrado habilidades excepcionales en deportes y desean estudiar Ciencias del Deporte.</p>
-                        <p><strong>Fecha de Publicación:</strong> 10 de junio de 2024</p>
-                        <p><strong>Fecha Límite de Postulación:</strong> 30 de septiembre de 2024</p>
-                        <p><strong>Porcentaje de Beca:</strong> 50%</p>
-                        <button class="apply-button">Aplicar</button>
-                    </div>
-                </li>
-                <li>
-                    <img src="beca4.jpg" alt="Beca Cultural" class="scholarship-image">
-                    <div class="scholarship-details">
-                        <h3>Beca Cultural</h3>
-                        <p><strong>Tipo de Beca:</strong> Cultural</p>
-                        <p><strong>Carrera:</strong> Historia del Arte</p>
-                        <p><strong>Descripción:</strong> Beca destinada a estudiantes que desean especializarse en Historia del Arte y demostrar interés en el patrimonio cultural.</p>
-                        <p><strong>Fecha de Publicación:</strong> 20 de junio de 2024</p>
-                        <p><strong>Fecha Límite de Postulación:</strong> 20 de septiembre de 2024</p>
-                        <p><strong>Porcentaje de Beca:</strong> 80%</p>
-                        <button class="apply-button">Aplicar</button>
-                    </div>
-                </li>
-                <li>
-                    <img src="beca5.jpg" alt="Beca de Innovación Tecnológica" class="scholarship-image">
-                    <div class="scholarship-details">
-                        <h3>Beca de Innovación Tecnológica</h3>
-                        <p><strong>Tipo de Beca:</strong> Innovación</p>
-                        <p><strong>Carrera:</strong> Ingeniería en Software</p>
-                        <p><strong>Descripción:</strong> Para estudiantes con proyectos innovadores en tecnología y software que buscan apoyo para desarrollarlos.</p>
-                        <p><strong>Fecha de Publicación:</strong> 15 de julio de 2024</p>
-                        <p><strong>Fecha Límite de Postulación:</strong> 15 de octubre de 2024</p>
-                        <p><strong>Porcentaje de Beca:</strong> 90%</p>
-                        <button class="apply-button">Aplicar</button>
-                    </div>
-                </li>
-                <li>
-                    <img src="beca6.jpg" alt="Beca de Liderazgo Social" class="scholarship-image">
-                    <div class="scholarship-details">
-                        <h3>Beca de Liderazgo Social</h3>
-                        <p><strong>Tipo de Beca:</strong> Social</p>
-                        <p><strong>Carrera:</strong> Ciencias Políticas</p>
-                        <p><strong>Descripción:</strong> Apoya a estudiantes interesados en desarrollar habilidades de liderazgo y participar en proyectos comunitarios.</p>
-                        <p><strong>Fecha de Publicación:</strong> 1 de agosto de 2024</p>
-                        <p><strong>Fecha Límite de Postulación:</strong> 1 de noviembre de 2024</p>
-                        <p><strong>Porcentaje de Beca:</strong> 70%</p>
-                        <button class="apply-button">Aplicar</button>
-                    </div>
-                </li>
+                <c:forEach var="beca" items="${becas}">
+                    <li>
+                        <div class="scholarship-details">
+                            <h3>${beca.titulo}</h3>
+                            <p>Tipo: ${beca.tipo}</p>
+                            <p>Carrera: ${beca.carrera}</p>
+                            <p>Descripción: ${beca.descripcion}</p>
+                            <p>Fecha Inicio: ${beca.fechaInicio}</p>
+                            <p>Fecha Fin: ${beca.fechaFin}</p>
+                        </div>
+                    </li>
+                </c:forEach>
             </ul>
-        </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Portal de Becas. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
