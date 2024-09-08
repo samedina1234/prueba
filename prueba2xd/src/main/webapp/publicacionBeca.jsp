@@ -189,7 +189,6 @@
     </style>
     </head>
     <body>
-         
         <div class="navbar">
         <a href="#informacion-personal"><i class="fas fa-user"></i> Información Personal</a>
         <a href="#informacion-academica"><i class="fas fa-school"></i> Información Académica</a>
@@ -199,130 +198,129 @@
         <a href="#documentos"><i class="fas fa-file-alt"></i> Documentos</a>
     </div>
     </div>
-         <div class="container">
-        <h2>Publicar Beca</h2>
-        <form action="#" method="post" enctype="multipart/form-data">
-            <!-- Información Personal -->
-            <div class="form-group">
-                <label for="titulobeca">Titulo de la Beca:</label>
-                <input type="text" id="titulobeca" name="titulobeca" required>
-            </div>
-            <div class="form-group">
-                <label for="tipobeca">Tipo de Beca:</label>
-                <select id="tipobeca" name="tipobeca" required>
-                    <option value="" disabled selected>Seleccione el tipo de Beca</option>
-                    <option value="academica">Excelencia Academica</option>
-                    <option value="deportiva">Becas Deportivas</option>
-                    <option value="economica">Becas de Necesidad Económica</option>
-                    <option value="internacional">Becas Internacionales</option>
-                    <option value="minorias">Becas para Minorías Sociales</option>
-                    <option value="empresas">Becas de Empresa</option>
-                    <option value="gobernamental">Becas de Programas Gubernamentales</option>
-                    <option value="gobernamental">Becas de Programa Sin Fines de Lucro</option>
-                    <!-- Agrega más opciones según sea necesario -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="imagenbeca">Imagen Promocional de la Beca:</label>
-                <input type="file" id="imagenbeca" name="imagenbeca" accept=".png, .jpeg, .jpg" required>
-            </div>
-            <div class="form-group">
-                <label for="carrerabeca">Carrera a la que aplica esta Beca:</label>
-                <select id="carrerabeca" name="carrerabeca" required>
-                    <option value="" disabled selected>Seleccione la carrera</option>
-                    <option value="carreras">Todas Las Carreras</option>
-                    <option value="ingenieria">Ingeniería</option>
-                    <option value="medicina">Medicina</option>
-                    <option value="derecho">Derecho</option>
-                    <option value="ciencias_sociales">Ciencias Sociales</option>
-                    <option value="artes">Artes</option>
-                    <option value="negocios">Negocios</option>
-                    <!-- Agrega más opciones según sea necesario -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="6" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="fecha-inicio">Fecha de Inicio:</label>
-                <input type="date" id="fecha-inicio" name="fecha-inicio" required>
-            </div>
-            <div class="form-group">
-                <label for="fecha-fin">Fecha de Fin:</label>
-                <input type="date" id="fecha-fin" name="fecha-fin" required>
-            </div>
-            <div class="form-group">
-                <label for="cupobeca">Cupos para la Beca:</label>
-                <input type="number" id="cupobeca" name="cupobeca" step="1" min="0" required pattern="\d+" title="Por favor, ingrese un número entero.">
-            </div>
-            <div class="form-group">
-                <label for="porcentaje-beca">Porcentaje de la Beca:</label>
-                <input type="number" id="porcentaje-beca" name="porcentaje-beca" step="1" min="45" max="100" required pattern="\d+" title="Por favor, ingrese un porcentaje entre 0 y 100." maxlength="3" oninput="this.value = this.value.slice(0, 3)">
-            </div>
-            <div class="form-group">
-                <label for="generobeca">Genero de los Solicitantes:</label>
-                <select id="generobeca" name="generobeca" required>
-                    <option value="" disabled selected>Seleccione el genero</option>
-                    <option value="todos">Todos</option>
-                    <option value="mujeres">Mujeres</option>
-                    <option value="hombres">Hombres</option>
-                    <!-- Agrega más opciones según sea necesario -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nacionalidad">Nacionalidad a la que aplica la beca:</label>
-                <select id="nacionalidad" name="nacionalidad" required>
-                    <option value="" disabled selected>Seleccione su nacionalidad</option>
-                    <option value="ecuador">Ecuatoriana</option>
-                    <option value="argentina">Argentina</option>
-                    <option value="chile">Chilena</option>
-                    <option value="colombia">Colombiana</option>
-                    <option value="mexico">Méxicana</option>
-                    <option value="peru">Peruana</option>
-                    <option value="espana">Española</option>
-                    <option value="todas">Todas</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="beca-discapacitados">¿La beca es solo para personas discapacitadas?</label>
-                <select id="beca-discapacitados" name="beca-discapacitados" required onchange="toggleDisabilityFields()">
+        <div class="container">
+    <h2>Publicar Beca</h2>
+    <form action="${pageContext.request.contextPath}/CrearBecaServlet" method="post" enctype="multipart/form-data">
+        <!-- Información Personal -->
+        <div class="form-group">
+            <label for="titulo">Título de la Beca:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo">Tipo de Beca:</label>
+            <select id="tipo" name="tipo" required>
+                <option value="" disabled selected>Seleccione el tipo de Beca</option>
+                <option value="Academica">Excelencia Académica</option>
+                <option value="Deportiva">Becas Deportivas</option>
+                <option value="Economica">Becas de Necesidad Económica</option>
+                <option value="Internacional">Becas Internacionales</option>
+                <option value="Minorias">Becas para Minorías Sociales</option>
+                <option value="Empresas">Becas de Empresa</option>
+                <option value="Gobernamental">Becas de Programas Gubernamentales</option>
+                <option value="Sin Lucro">Becas de Programa Sin Fines de Lucro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="imagenbeca">Imagen Promocional de la Beca:</label>
+            <input type="file" id="imagenbeca" name="imagenbeca" accept=".png, .jpeg, .jpg" required>
+        </div>
+        <div class="form-group">
+            <label for="carrera">Carrera a la que aplica esta Beca:</label>
+            <select id="carrera" name="carrera" required>
+                <option value="" disabled selected>Seleccione la carrera</option>
+                <option value="carreras">Todas Las Carreras</option>
+                <option value="ingenieria">Ingeniería</option>
+                <option value="medicina">Medicina</option>
+                <option value="derecho">Derecho</option>
+                <option value="ciencias_sociales">Ciencias Sociales</option>
+                <option value="artes">Artes</option>
+                <option value="negocios">Negocios</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="6" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha de Inicio:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_fin">Fecha de Fin:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" required>
+        </div>
+        <div class="form-group">
+            <label for="cupos">Cupos para la Beca:</label>
+            <input type="number" id="cupos" name="cupos" step="1" min="0" required pattern="\d+" title="Por favor, ingrese un número entero.">
+        </div>
+        <div class="form-group">
+            <label for="porcentaje">Porcentaje de la Beca:</label>
+            <input type="number" id="porcentaje" name="porcentaje" step="1" min="45" max="100" required pattern="\d+" title="Por favor, ingrese un porcentaje entre 45 y 100." maxlength="3" oninput="this.value = this.value.slice(0, 3)">
+        </div>
+        <div class="form-group">
+            <label for="genero">Género de los Solicitantes:</label>
+            <select id="genero" name="genero" required>
+                <option value="" disabled selected>Seleccione el género</option>
+                <option value="todos">Todos</option>
+                <option value="mujeres">Mujeres</option>
+                <option value="hombres">Hombres</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nacionalidad">Nacionalidad a la que aplica la beca:</label>
+            <select id="nacionalidad" name="nacionalidad" required>
+                <option value="" disabled selected>Seleccione su nacionalidad</option>
+                <option value="Ecuador">Ecuatoriana</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Chile">Chilena</option>
+                <option value="Colombia">Colombiana</option>
+                <option value="Mexico">Mexicana</option>
+                <option value="Peru">Peruana</option>
+                <option value="Espana">Española</option>
+                <option value="Todas">Todas</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="solo_discapacitados">¿La beca es solo para personas discapacitadas?</label>
+            <select id="solo_discapacitados" name="solo_discapacitados" required onchange="toggleDisabilityFields()">
                 <option value="" disabled selected>Seleccione una opción</option>
-                <option value="si">Sí</option>
-                <option value="no">No</option>
-                </select>
-            </div>
-            <!-- Div para el tipo de discapacidad -->
-            <div class="form-group" id="tipo-discapacidad" style="display: none;">
-                <label for="tipo-discapacidad-input">Tipo de discapacidad:</label>
-                <input type="text" id="tipo-discapacidad-input" name="tipo-discapacidad-input" placeholder="Especificar tipo de discapacidad">
-            </div>
-            <!-- Div para el porcentaje de discapacidad -->
-            <div class="form-group" id="porcentaje-discapacidad" style="display: none;">
-                <label for="porcentaje-discapacidad-input">Porcentaje de discapacidad:</label>
-                <input type="number" id="porcentaje-discapacidad-input" name="porcentaje-discapacidad-input" min="0" max="100" required placeholder="Ejemplo: 50" maxlength="3" oninput="this.value = this.value.slice(0, 3)">
-            </div>
-            <script>
-                function toggleDisabilityFields() {
-                    const select = document.getElementById('beca-discapacitados');
-                    const tipoDiscapacidad = document.getElementById('tipo-discapacidad');
-                    const porcentajeDiscapacidad = document.getElementById('porcentaje-discapacidad');
-                    if (select.value === 'si') {
-                        tipoDiscapacidad.style.display = 'block';
-                        porcentajeDiscapacidad.style.display = 'block';
-                    } else {
-                        tipoDiscapacidad.style.display = 'none';
-                        porcentajeDiscapacidad.style.display = 'none';
-                    }
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <!-- Div para el tipo de discapacidad -->
+        <div class="form-group" id="tipo_discapacidad" style="display: none;">
+            <label for="tipo_discapacidad">Tipo de discapacidad:</label>
+            <input type="text" id="tipo_discapacidad" name="tipo_discapacidad" placeholder="Especificar tipo de discapacidad">
+        </div>
+        <!-- Div para el porcentaje de discapacidad -->
+        <div class="form-group" id="porcentaje_discapacidad" style="display: none;">
+            <label for="porcentaje_discapacidad">Porcentaje de discapacidad:</label>
+            <input type="number" id="porcentaje_discapacidad" name="porcentaje_discapacidad" min="0" max="100" required placeholder="Ejemplo: 50" maxlength="3" oninput="this.value = this.value.slice(0, 3)">
+        </div>
+        
+        <script>
+            function toggleDisabilityFields() {
+                const select = document.getElementById('solo_discapacitados');
+                const tipoDiscapacidad = document.getElementById('tipo_discapacidad');
+                const porcentajeDiscapacidad = document.getElementById('porcentaje_discapacidad');
+                
+                if (select.value === 'true') {
+                    tipoDiscapacidad.style.display = 'block';
+                    porcentajeDiscapacidad.style.display = 'block';
+                } else {
+                    tipoDiscapacidad.style.display = 'none';
+                    porcentajeDiscapacidad.style.display = 'none';
                 }
-            </script>
-            <!-- Confirmación y Envío -->
-            <div class="form-group">
-                <input type="checkbox" id="declaracion" name="declaracion" required>
-                <label for="declaracion">Confirmo que toda la información proporcionada es verdadera y exacta.</label>
-            </div>
-            <button type="submit" class="submit-btn">Enviar</button>
-        </form>
-    </div>
+            }
+        </script>
+        <!-- Confirmación y Envío -->
+        <div class="form-group">
+            <input type="checkbox" id="confirmacion" name="confirmacion" required>
+            <label for="confirmacion">Confirmo que toda la información proporcionada es verdadera y exacta.</label>
+        </div>
+        <button type="submit" class="submit-btn">Publicar Beca</button>
+    </form>
+</div>
     </body>
 </html>
