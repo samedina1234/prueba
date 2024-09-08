@@ -4,35 +4,25 @@
  */
 package controller;
 
-import entidades.BECA;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import entidades.Beca;
+import entidadesDAO.BecaDAO;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
-
+import java.util.List;
 
 /**
- *
- * @author Tuf
+ * Controlador para gestionar las solicitudes relacionadas con las becas.
  */
 @WebServlet(name = "BecaController", urlPatterns = {"/BecaController"})
 public class BecaController extends HttpServlet {
-    private static final String URL = "jdbc:postgresql://localhost:5432/proyectopw";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "1234";
+
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -43,20 +33,13 @@ public class BecaController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BecaController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BecaController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            BecaDAO becaDAO = new BecaDAO();
+            List<Beca> listaBecas = becaDAO.getListadoBecas();
+            request.setAttribute("listadoBecas", listaBecas); // Para que esté disponible en la página JSP.
+            request.getRequestDispatcher("/lista_becas.jsp").forward(request, response);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -66,42 +49,10 @@ public class BecaController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-
-    List<BECA> becas = new ArrayList<>();
-    try {
-        Class.forName("org.postgresql.Driver");
-        Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        String sql = "SELECT id, titulo, tipo, carrera, descripcion, fecha_inicio, fecha_fin FROM becas";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-
-        while (resultSet.next()) {
-            BECA beca = new BECA(
-                    resultSet.getInt("id"),
-                    resultSet.getString("titulo"),
-                    resultSet.getString("tipo"),
-                    resultSet.getString("carrera"),
-                    resultSet.getString("descripcion"),
-                    resultSet.getDate("fecha_inicio").toLocalDate(),
-                    resultSet.getDate("fecha_fin").toLocalDate()
-            );
-            becas.add(beca);
-        }
-
-        resultSet.close();
-        statement.close();
-        connection.close();
-    } catch (Exception e) {
-        e.printStackTrace();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
-
-    // Pasar la lista de becas a la JSP
-    request.setAttribute("becas", becas);
-    request.getRequestDispatcher("lista_Becas.jsp").forward(request, response);
-}
-    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -111,16 +62,19 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-     @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+        return "Controlador para gestionar las becas.";
+    }
 }
-
