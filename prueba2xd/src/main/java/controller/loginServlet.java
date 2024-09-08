@@ -22,8 +22,8 @@ import jakarta.servlet.http.HttpSession;
  */
 public class loginServlet extends HttpServlet {
       private static final String URL = "jdbc:postgresql://localhost:5432/proyectopw";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "1234";
+      private static final String USER = "postgres";
+      private static final String PASSWORD = "1234";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -26,21 +26,20 @@
         </thead>
         <tbody>
             <c:forEach var="beca" items="${listadoBecas}">
-    <tr>
-        <td>${beca.id}</td>
-        <td>${beca.titulo}</td>
-        <td>${beca.tipo}</td>
-        <td>${beca.carrera}</td>
-        <td>${beca.descripcion}</td>
-        <td>${beca.fechaInicio}</td>
-        <td>${beca.fechaFin}</td>
-        <td>${beca.cupos}</td>
-        <td>${beca.porcentaje}</td>
-        <td>${beca.genero}</td>
-        <td>${beca.nacionalidad}</td>
-    </tr>
-</c:forEach>
-
+                <tr>
+                    <td>${beca.id}</td>
+                    <td>${beca.titulo}</td>
+                    <td>${beca.tipo}</td>
+                    <td>${beca.carrera}</td>
+                    <td>${beca.descripcion}</td>
+                    <td>${beca.fecha_inicio}</td>
+                    <td>${beca.fecha_fin}</td>
+                    <td>${beca.cupos}</td>
+                    <td>${beca.porcentaje}</td>
+                    <td>${beca.genero}</td>
+                    <td>${beca.nacionalidad}</td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </body>

@@ -7,6 +7,7 @@ package entidadesDAO;
 import entidades.Beca;
 import conexion.conexionbd;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class BecaDAO {
 
     public List<Beca> getListadoBecas() {
         List<Beca> listaBecas = new ArrayList<>();
-        String strSQL = "SELECT id, titulo, tipo, carrera, descripcion, fecha_inicio, fecha_fin, cupos, porcentaje, genero, nacionalidad, solo_discapacitados, tipo_discapacidad, porcentaje_discapacidad, confirmacion, fecha_creacion FROM becas ORDER BY id";
+        String strSQL = "SELECT id, titulo, tipo, carrera, descripcion, fecha_inicio, fecha_fin, cupos, porcentaje, genero, nacionalidad, tipo_discapacidad, porcentaje_discapacidad, confirmacion, fecha_creacion FROM becas ORDER BY id";
 
         try (Connection con = conexionbd.getConnection();
              Statement stm = con.createStatement();
@@ -32,17 +33,17 @@ public class BecaDAO {
                 beca.setTipo(rst.getString("tipo"));
                 beca.setCarrera(rst.getString("carrera"));
                 beca.setDescripcion(rst.getString("descripcion"));
-                beca.setFechaInicio(rst.getString("fecha_inicio"));
-                beca.setFechaFin(rst.getString("fecha_fin"));
+                
+                // Asignar fechas usando java.sql.Date
+                beca.setFecha_inicio(rst.getDate("fecha_inicio"));
+                beca.setFecha_fin(rst.getDate("fecha_fin"));
+
                 beca.setCupos(rst.getInt("cupos"));
                 beca.setPorcentaje(rst.getInt("porcentaje"));
                 beca.setGenero(rst.getString("genero"));
                 beca.setNacionalidad(rst.getString("nacionalidad"));
-                beca.setSoloDiscapacitados(rst.getBoolean("solo_discapacitados"));
-                beca.setTipoDiscapacidad(rst.getString("tipo_discapacidad"));
-                beca.setPorcentajeDiscapacidad(rst.getInt("porcentaje_discapacidad"));
-                beca.setConfirmacion(rst.getBoolean("confirmacion"));
-                beca.setFechaCreacion(rst.getString("fecha_creacion"));
+                beca.setTipo_discapacidad(rst.getString("tipo_discapacidad"));
+                beca.setPorcentaje_discapacidad(rst.getInt("porcentaje_discapacidad"));
 
                 listaBecas.add(beca);
             }
@@ -53,4 +54,3 @@ public class BecaDAO {
         return listaBecas;
     }
 }
-
