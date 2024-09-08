@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>formulario</title>
+        <title>Publicar Beca</title>
         <style>
             body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

@@ -18,26 +18,14 @@
         header {
             background-color: #007BFF;
             color: white;
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .logo {
-            flex: 1;
-            text-align: left;
-        }
-
-        .logo h1 {
+        header h1 {
             margin: 0;
-            font-size: 1.2rem;
-        }
-
-        nav {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
+            font-size: 1.5rem;
         }
 
         nav ul {
@@ -45,17 +33,17 @@
             padding: 0;
             margin: 0;
             display: flex;
+            justify-content: center;
         }
 
         nav ul li {
-            margin-left: 20px;
+            margin: 0 15px;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
@@ -64,76 +52,72 @@
 
         main {
             padding: 2rem;
-        }
-
-        .scholarship-list {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            margin-top: 0;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
         }
 
-        .scholarship-details {
-            flex: 1;
+        .scholarship-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        h3 {
+        .scholarship-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .scholarship-card h3 {
             margin: 0;
-            color: #333;
+            font-size: 1.3rem;
+            color: #007BFF;
         }
 
-        p {
+        .scholarship-card p {
             margin: 0.5rem 0;
             color: #555;
         }
+
+        .scholarship-card .scholarship-meta {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .scholarship-card .scholarship-meta span {
+            display: block;
+            margin-top: 0.3rem;
+        }
+
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>Lista de Becas</h1>
-        </div>
+        <h1>Lista de Becas</h1>
         <nav>
             <ul>
-                <li><a href="index.jsp">Inicio</a></li>
-                <li><a href="listarBecas">Lista de Becas</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="lista_Becas">Lista de Becas</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <div class="scholarship-list">
-            <h2>Lista de Becas Disponibles</h2>
-            <ul>
-                <c:forEach var="beca" items="${becas}">
-                    <li>
-                        <div class="scholarship-details">
-                            <h3>${beca.titulo}</h3>
-                            <p>Tipo: ${beca.tipo}</p>
-                            <p>Carrera: ${beca.carrera}</p>
-                            <p>Descripción: ${beca.descripcion}</p>
-                            <p>Fecha Inicio: ${beca.fechaInicio}</p>
-                            <p>Fecha Fin: ${beca.fechaFin}</p>
-                        </div>
-                    </li>
-                </c:forEach>
-            </ul>
-        </div>
+        <c:forEach var="beca" items="${becas}">
+            <div class="scholarship-card">
+                <h3>${beca.titulo}</h3>
+                <p>Descripción: ${beca.descripcion}</p>
+                <div class="scholarship-meta">
+                    <span>Tipo: ${beca.tipo}</span>
+                    <span>Carrera: ${beca.carrera}</span>
+                    <span>Fecha Inicio: ${beca.fechaInicio}</span>
+                    <span>Fecha Fin: ${beca.fechaFin}</span>
+                </div>
+            </div>
+        </c:forEach>
     </main>
 </body>
 </html>
