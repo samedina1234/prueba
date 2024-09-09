@@ -4,6 +4,8 @@
  */
 package entidades;
 
+import java.sql.Date;
+
 /**
  * Clase Beca para representar la entidad Beca en la base de datos
  */
@@ -13,8 +15,8 @@ public class Beca {
     private String tipo;
     private String carrera;
     private String descripcion;
-    private String fechaInicio;
-    private String fechaFin;
+    private Date fechaInicio;
+    private Date fechaFin;
     private int cupos;
     private int porcentaje;
     private String genero;
@@ -45,11 +47,11 @@ public class Beca {
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public String getFechaInicio() { return fechaInicio; }
-    public void setFechaInicio(String fechaInicio) { this.fechaInicio = fechaInicio; }
+    public Date getFechaInicio() { return fechaInicio; }
+    public void setFechaInicio(Date fechaInicio) { this.fechaInicio = fechaInicio; }
 
-    public String getFechaFin() { return fechaFin; }
-    public void setFechaFin(String fechaFin) { this.fechaFin = fechaFin; }
+    public Date getFechaFin() { return fechaFin; }
+    public void setFechaFin(Date fechaFin) { this.fechaFin = fechaFin; }
 
     public int getCupos() { return cupos; }
     public void setCupos(int cupos) { this.cupos = cupos; }

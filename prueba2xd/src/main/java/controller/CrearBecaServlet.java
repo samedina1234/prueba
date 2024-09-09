@@ -8,7 +8,6 @@ import conexion.conexionbd;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.Timestamp; 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -30,8 +29,8 @@ public class CrearBecaServlet extends HttpServlet {
         String tipo = request.getParameter("tipo");
         String carrera = request.getParameter("carrera");
         String descripcion = request.getParameter("descripcion");
-        Date fechaInicio = Date.valueOf(request.getParameter("fecha_inicio"));
-        Date fechaFin = Date.valueOf(request.getParameter("fecha_fin"));
+        java.sql.Date fechaInicio = java.sql.Date.valueOf(request.getParameter("fecha_inicio"));
+        java.sql.Date fechaFin = java.sql.Date.valueOf(request.getParameter("fecha_fin"));
         int cupos = Integer.parseInt(request.getParameter("cupos"));
         int porcentaje = Integer.parseInt(request.getParameter("porcentaje"));
         String genero = request.getParameter("genero");
