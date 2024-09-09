@@ -4,12 +4,13 @@
  */
 package controller;
 
+import entidades.Beca;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import entidades.Beca;
+
 import entidadesDAO.BecaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,15 +31,22 @@ public class BecaController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            BecaDAO becaDAO = new BecaDAO();
-            List<Beca> listaBecas = becaDAO.getListadoBecas();
-            request.setAttribute("listadoBecas", listaBecas); // Para que esté disponible en la página JSP.
-            request.getRequestDispatcher("/lista_becas.jsp").forward(request, response);
-        }
+        throws ServletException, IOException {
+    response.setContentType("text/html;charset=UTF-8");
+    try (PrintWriter out = response.getWriter()) {
+        // Crear una instancia de BecaDAO
+        BecaDAO becaDAO = new BecaDAO();
+        
+        // Obtener la lista de becas desde el DAO
+        List<Beca> listaBecas = becaDAO.getListadoBecas();
+        
+        // Configurar la lista de becas como atributo de la solicitud
+        request.setAttribute("listadoBecas", listaBecas);
+        
+        // Redirigir a la página JSP con la lista de becas
+        request.getRequestDispatcher("/lista_becas.jsp").forward(request, response);
     }
+}
 
     /**
      * Handles the HTTP <code>GET</code> method.

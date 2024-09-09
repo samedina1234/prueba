@@ -200,7 +200,7 @@
     </div>
         <div class="container">
             <h2>Publicar Beca</h2>
-            <form action="${pageContext.request.contextPath}/CrearBecaServlet" method="post" enctype="multipart/form-data">
+            <form action="CrearBecaServlet" method="post">
                 <!-- Información Personal -->
                 <div class="form-group">
                     <label for="titulo">Título de la Beca:</label>
@@ -300,27 +300,31 @@
                 </div>
         
                 <script>
-                    function toggleDisabilityFields() {
-                        const select = document.getElementById('solo_discapacitados');
-                        const tipoDiscapacidad = document.getElementById('tipo_discapacidad');
-                        const porcentajeDiscapacidad = document.getElementById('porcentaje_discapacidad');
-                
-                        if (select.value === 'true') {
-                            tipoDiscapacidad.style.display = 'block';
-                            porcentajeDiscapacidad.style.display = 'block';
-                        } else {
-                            tipoDiscapacidad.style.display = 'none';
-                            porcentajeDiscapacidad.style.display = 'none';
-                        }
+                function toggleDisabilityFields() {
+                    const select = document.getElementById('solo_discapacitados');
+                    const tipoDiscapacidad = document.getElementById('tipo_discapacidad');
+                    const porcentajeDiscapacidad = document.getElementById('porcentaje_discapacidad');
+
+                    if (select.value === 'true') {
+                        tipoDiscapacidad.style.display = 'block';
+                        tipoDiscapacidad.querySelector('input').setAttribute('required', 'true');
+                        porcentajeDiscapacidad.style.display = 'block';
+                        porcentajeDiscapacidad.querySelector('input').setAttribute('required', 'true');
+                    } else {
+                        tipoDiscapacidad.style.display = 'none';
+                        tipoDiscapacidad.querySelector('input').removeAttribute('required');
+                        porcentajeDiscapacidad.style.display = 'none';
+                        porcentajeDiscapacidad.querySelector('input').removeAttribute('required');
                     }
-                </script>
+                }
+            </script>
                 <!-- Confirmación y Envío -->
                 <div class="form-group">
                     <input type="checkbox" id="confirmacion" name="confirmacion" required>
                     <label for="confirmacion">Confirmo que toda la información proporcionada es verdadera y exacta.</label>
                 </div>
                 <button type="submit" class="submit-btn">Publicar Beca</button>
-            </form>
+            </form >
         </div>
     </body>
 </html>

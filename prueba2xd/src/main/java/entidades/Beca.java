@@ -5,11 +5,13 @@
 package entidades;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Clase Beca para representar la entidad Beca en la base de datos
  */
-public class Beca {
+    // Constructor vacío
+    public class Beca {
     private int id;
     private String titulo;
     private String tipo;
@@ -25,7 +27,7 @@ public class Beca {
     private String tipoDiscapacidad;
     private int porcentajeDiscapacidad;
     private boolean confirmacion;
-    private String fechaCreacion;
+    private Timestamp fechaCreacion; // Cambiado a Timestamp
 
     // Constructor vacío
     public Beca() {
@@ -77,7 +79,7 @@ public class Beca {
     public boolean isConfirmacion() { return confirmacion; }
     public void setConfirmacion(boolean confirmacion) { this.confirmacion = confirmacion; }
 
-    public String getFechaCreacion() { return fechaCreacion; }
-    public void setFechaCreacion(String fechaCreacion) { this.fechaCreacion = fechaCreacion; }
+    public Timestamp getFechaCreacion() { return fechaCreacion; }
+    public void setFechaCreacion(Timestamp fechaCreacion) { this.fechaCreacion = fechaCreacion; }
 }
-
+    
