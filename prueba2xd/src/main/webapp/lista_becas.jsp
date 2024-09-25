@@ -100,8 +100,7 @@
             font-size: 16px;
             transition: background-color 0.3s, color 0.3s;
         }
-
-
+        
         h1 {
             text-align: center;
             margin-top: 20px;

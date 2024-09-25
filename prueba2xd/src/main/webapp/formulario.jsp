@@ -93,7 +93,6 @@
             display: flex;
             gap: 15px;
         }
-          
         .navbar .auth-buttons a {
             padding: 10px 20px;
             border: 2px solid #ffffff;
@@ -248,7 +247,7 @@
         }
     </style>
     </head>
-    <body>  
+    <body>
         <div class="navbar">
             <div class="logo">
                 <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/scholarship-logo-template-design-bc12c6a960b9e09217bd6641d39f7c9f_screen.jpg?ts=1611089737" alt="Logo">
