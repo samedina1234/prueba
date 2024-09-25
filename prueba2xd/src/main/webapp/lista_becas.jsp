@@ -13,6 +13,94 @@
             padding: 0;
             color: #333;
         }
+        /* Barra de navegación */
+        .navbar {
+            position: fixed; /* Fija la barra de navegación en la parte superior */
+            top: 0; /* Posición en la parte superior */
+            left: 0;
+            width: 100%; /* Asegura que ocupe todo el ancho de la página */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #004d40, #00796b);
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Asegura que quede por encima de otros elementos */
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 80px; /* Aumentado de 50px a 80px */
+            margin-right: 15px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .logo h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            padding: 10px 0;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background-color: #ffffff;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            transform-origin: bottom right;
+        }
+
+        .navbar .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .navbar .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .auth-buttons a {
+            padding: 10px 20px;
+            border: 2px solid #ffffff;
+            border-radius: 25px;
+            margin-right: 20px;
+            color: #ffffff;
+            background-color: transparent;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar .auth-buttons a:hover {
+            background-color: #ffffff;
+            color: #004d40;
+        }
 
         h1 {
             text-align: center;
@@ -103,6 +191,22 @@
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/scholarship-logo-template-design-bc12c6a960b9e09217bd6641d39f7c9f_screen.jpg?ts=1611089737" alt="Logo">
+            <h1>Scholar Union</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="formulario.jsp">Formulario</a>
+            <a href="publicacionBeca.jsp">Publicar Beca</a>
+            <a href="lista_becas.jsp">Lista de Becas</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="login.jsp">Login</a>
+            <a href="register.jsp">Registrar</a>
+        </div>
+    </div>
     <div class="container">
         <h1>Listado de Becas Disponibles</h1>
         <c:forEach var="beca" items="${listadoBecas}">

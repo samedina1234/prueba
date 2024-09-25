@@ -22,35 +22,94 @@
             align-items: center;
             min-height: 100vh;
         }
-
-        /* Estilos para la barra de navegación */
+        /* Barra de navegación */
         .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #00796b;
-            color: white;
+            position: fixed; /* Fija la barra de navegación en la parte superior */
+            top: 0; /* Posición en la parte superior */
+            left: 0;
+            width: 100%; /* Asegura que ocupe todo el ancho de la página */
             display: flex;
-            justify-content: center;
-            padding: 10px 0;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #004d40, #00796b);
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Asegura que quede por encima de otros elementos */
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 80px; /* Aumentado de 50px a 80px */
+            margin-right: 15px;
+            border-radius: 50%;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: background-color 0.3s ease;
         }
 
-        .navbar a {
-            color: white;
+        .navbar .logo h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: #ffffff;
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            padding: 10px 0;
+            transition: color 0.3s;
         }
 
-        .navbar a:hover {
-            color: #b2dfdb;
+        .navbar .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background-color: #ffffff;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            transform-origin: bottom right;
         }
 
+        .navbar .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .navbar .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .auth-buttons a {
+            padding: 10px 20px;
+            border: 2px solid #ffffff;
+            border-radius: 25px;
+            margin-right: 20px;
+            color: #ffffff;
+            background-color: transparent;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar .auth-buttons a:hover {
+            background-color: #ffffff;
+            color: #004d40;
+        }
         .container {
             width: 90%;
             max-width: 800px;
@@ -190,14 +249,21 @@
     </head>
     <body>
         <div class="navbar">
-        <a href="#informacion-personal"><i class="fas fa-user"></i> Información Personal</a>
-        <a href="#informacion-academica"><i class="fas fa-school"></i> Información Académica</a>
-        <a href="#carrera"><i class="fas fa-book"></i> Carreras</a>
-        <a href="#ensayo"><i class="fas fa-pencil-alt"></i> Ensayo</a>
-        <a href="#referencias"><i class="fas fa-address-book"></i> Referencias</a>
-        <a href="#documentos"><i class="fas fa-file-alt"></i> Documentos</a>
-    </div>
-    </div>
+            <div class="logo">
+                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/scholarship-logo-template-design-bc12c6a960b9e09217bd6641d39f7c9f_screen.jpg?ts=1611089737" alt="Logo">
+                <h1>Scholar Union</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="formulario.jsp">Formulario</a>
+                <a href="publicacionBeca.jsp">Publicar Beca</a>
+                <a href="lista_becas.jsp">Lista de Becas</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.jsp">Login</a>
+                <a href="register.jsp">Registrar</a>
+            </div>
+        </div>
         <div class="container">
             <h2>Publicar Beca</h2>
             <form action="CrearBecaServlet" method="post">
@@ -295,10 +361,10 @@
                 </div>
                 <!-- Div para el porcentaje de discapacidad -->
                 <div class="form-group" id="porcentaje_discapacidad" style="display: none;">
-                <label for="porcentaje_discapacidad">Porcentaje de discapacidad:</label>
+                    <label for="porcentaje_discapacidad">Porcentaje de discapacidad:</label>
                     <input type="number" id="porcentaje_discapacidad" name="porcentaje_discapacidad" min="0" max="100" required placeholder="Ejemplo: 50" maxlength="3" oninput="this.value = this.value.slice(0, 3)">
                 </div>
-        
+
                 <script>
                 function toggleDisabilityFields() {
                     const select = document.getElementById('solo_discapacitados');
@@ -317,7 +383,7 @@
                         porcentajeDiscapacidad.querySelector('input').removeAttribute('required');
                     }
                 }
-            </script>
+                </script>
                 <!-- Confirmación y Envío -->
                 <div class="form-group">
                     <input type="checkbox" id="confirmacion" name="confirmacion" required>
