@@ -83,6 +83,11 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
+        
+        .navbar .auth-buttons a:hover {
+            background-color: #ffffff;
+            color: #004d40;
+        }
 
         .navbar .auth-buttons a {
             padding: 10px 20px;
@@ -96,10 +101,6 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .navbar .auth-buttons a:hover {
-            background-color: #ffffff;
-            color: #004d40;
-        }
 
         h1 {
             text-align: center;
