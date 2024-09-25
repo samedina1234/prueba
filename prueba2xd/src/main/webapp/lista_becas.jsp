@@ -74,15 +74,14 @@
             transition: transform 0.3s;
             transform-origin: bottom right;
         }
+        .navbar .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
 
         .navbar .nav-links a:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
-        }
-
-        .navbar .auth-buttons {
-            display: flex;
-            gap: 15px;
         }
 
         .navbar .auth-buttons a {

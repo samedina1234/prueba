@@ -93,7 +93,12 @@
             display: flex;
             gap: 15px;
         }
-
+        
+        .navbar .auth-buttons a:hover {
+            background-color: #ffffff;
+            color: #004d40;
+        }
+        
         .navbar .auth-buttons a {
             padding: 10px 20px;
             border: 2px solid #ffffff;
@@ -106,10 +111,6 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .navbar .auth-buttons a:hover {
-            background-color: #ffffff;
-            color: #004d40;
-        }
         .container {
             width: 90%;
             max-width: 800px;
